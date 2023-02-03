@@ -5,8 +5,8 @@ export class Task {
   name: string;
   @Prop()
   description: string;
-  @Prop()
-  date: string;
+  @Prop({ type: Date })
+  date: Date;
   @Prop()
   isDone: boolean;
 }

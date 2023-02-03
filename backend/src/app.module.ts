@@ -3,13 +3,19 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { TaskSchema } from './tasks/schema/task.schema';
+import { TasksService } from './tasks/tasks.service';
+import { TasksController } from './tasks/tasks.controller';
+
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.DB, { dbName: process.env.DB_NAME }),
+    MongooseModule.forRoot(process.env.DB),
+    MongooseModule.forFeature([{ name: 'Task', schema: TaskSchema }]),
+
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, TasksController],
+  providers: [AppService, TasksService],
 })
 export class AppModule {}
