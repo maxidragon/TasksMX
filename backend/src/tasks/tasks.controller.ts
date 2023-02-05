@@ -9,11 +9,8 @@ export class TasksController {
   @Get()
   async getAllTasks(@Res() response) {
     try {
-      const taskData = await this.tasksService.getAllTasks();
-      return response.status(HttpStatus.OK).json({
-        message: 'All tasks found successfully',
-        taskData,
-      });
+      const data = await this.tasksService.getAllTasks();
+      return response.status(HttpStatus.OK).json(data);
     } catch (err) {
       return response.status(err.status).json(err.response);
     }
@@ -34,10 +31,7 @@ export class TasksController {
   async createTask(@Res() response, @Body() createTaskDto: CreateTaskDto) {
     try {
       const newTask = await this.tasksService.createTask(createTaskDto);
-      return response.status(HttpStatus.CREATED).json({
-        message: 'Task has been created successfully',
-        newTask,
-      });
+      return response.status(HttpStatus.CREATED).json(newTask);
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
         statusCode: 400,
