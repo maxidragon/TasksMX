@@ -17,8 +17,11 @@ const Task = (props) => {
         <div className="task">
             <h2 onClick={toggleDesc}>{props.name}</h2>
             {showDesc && (
-                <div className="description">{props.description}</div>
-            )}
+                <div>
+                    <div className="description">{props.description}</div>
+                    <div className="date">{props.date}</div>
+                </div>
+                    )}
             <button className="edit" onClick={editHandler}>Edit</button>
             <button className="delete" onClick={() => {props.onDelete(props._id)}}>Delete</button>
         </div>

@@ -32,7 +32,7 @@ class Tasks extends React.Component {
       async addTask(task) {
         try {
             const tasks = [...this.state.tasks]
-            const res = await axios.post('/api/notes', task)
+            const res = await axios.post('/tasks', task)
             const newTask = res.data
             tasks.push(newTask)
             this.setState({tasks})
@@ -79,6 +79,7 @@ class Tasks extends React.Component {
                             key={task._id}
                             name={task.name}
                             description={task.description}
+                            date={task.date}
                             _id={task._id}
                             date={task.date}
                             onEdit={(task) => this.editTaskHandler(task)}
