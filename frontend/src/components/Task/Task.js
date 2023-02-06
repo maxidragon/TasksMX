@@ -1,9 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Task = (props) => {
-    return (
-        <div>
+    const [showDesc, setShowDesc] = useState(false)
+    const toggleDesc = () => {
+        setShowDesc(!showDesc)
+    }
+    const editHandler = () => {
+        props.onEdit({
+            name: props.name,
+            description: props.description,
+            _id: props._id
+        });
+    }
 
+    return (
+        <div className="task">
+            <h2 onClick={toggleDesc}>{props.name}</h2>
+            {showDesc && (
+                <div className="description">{props.description}</div>
+            )}
+            <button className="edit" onClick={editHandler}>Edit</button>
+            <button className="delete" onClick={() => {props.onDelete(props._id)}}>Delete</button>
         </div>
     )
 }
