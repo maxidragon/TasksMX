@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './NewTask.css'
 
 const NewTask = (props) => {
     const [showForm, setShowForm] = useState(false)
@@ -32,20 +33,33 @@ const NewTask = (props) => {
         setShowForm(false)
     }
     return (
-        showForm ? (
-        <div className="">
-            <label>Title</label>
-            <input type="text" value={name} onChange={changeNameHandler}/>
-            <br />
-            <label>Description</label>
-            <input type="text" value={description} onChange={changeDescHandler}/>
-            <label>Date</label>
-            <input type="date" value={date} onChange={changeDateHandler}/>
-            <button onClick={() => addTask()}>Add task</button>
+        <div className="new-task">
+            {showForm ? (
+                <div className="new-task__controls">
+                    <div className="new-task__control">
+                        <label>Title</label>
+                        <input type="text" value={name} onChange={changeNameHandler}/>
+                    </div>
+                    <div className="new-task__control">
+                        <label>Description</label>
+                        <input type="text" value={description} onChange={changeDescHandler}/>
+                    </div>
+                    <div className="new-task__control">
+                        <label>Date</label>
+                        <input type="date" value={date} onChange={changeDateHandler}/>
+                    </div>
+                    <div className="new-task__actions">
+                        <button onClick={() => addTask()}>Add task</button>
+                        <button onClick={() => setShowForm(!showForm)}>Cancel</button>
+                    </div>
+
+                </div>
+            ) : (
+
+                <button onClick={() => setShowForm(true)}>Add task</button>
+
+            )}
         </div>
-        ) : (
-            <button onClick={() => setShowForm(true)}>Add task</button>
-        )
     )
 }
 

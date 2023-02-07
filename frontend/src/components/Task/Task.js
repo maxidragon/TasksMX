@@ -1,4 +1,7 @@
 import React, {useState} from 'react';
+import TaskDate from './TaskDate';
+import Card from "../UI/Card";
+import './Task.css';
 
 const Task = (props) => {
     const [showDesc, setShowDesc] = useState(false)
@@ -14,17 +17,23 @@ const Task = (props) => {
     }
 
     return (
-        <div className="task">
-            <h2 onClick={toggleDesc}>{props.name}</h2>
-            {showDesc && (
-                <div>
-                    <div className="description">{props.description}</div>
-                    <div className="date">{props.date}</div>
-                </div>
+        <li>
+            <Card className="task-item">
+                <div className="task-item__description">
+                    <TaskDate date={props.date}/>
+                    <h2 onClick={toggleDesc}>{props.name}</h2>
+                    {showDesc && (
+                        <div className="description">{props.description}</div>
                     )}
-            <button className="edit" onClick={editHandler}>Edit</button>
-            <button className="delete" onClick={() => {props.onDelete(props._id)}}>Delete</button>
-        </div>
+                    <button className="edit" onClick={editHandler}>Edit</button>
+                    <button className="delete" onClick={() => {
+                        props.onDelete(props._id)
+                    }}>Delete
+                    </button>
+
+                </div>
+            </Card>
+        </li>
     )
 }
 
