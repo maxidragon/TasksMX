@@ -11,7 +11,10 @@ const Footer = () => {
             </div>
             <div className="icons">
                 <a href="https://github.com/maxidragon/TasksMX">
-                    
+
+                </a>
+                <a href="mailto:maksymilian.gala1@gmail.com">
+
                 </a>
             </div>
         </footer>
