@@ -8,6 +8,7 @@ import EditTask from "../Task/EditTask";
 import NewTask from "../Task/NewTask";
 import Card from "../UI/Card";
 import './Tasks.css';
+import './EditTaskModal.css';
 
 class Tasks extends React.Component {
     constructor(props) {
@@ -74,11 +75,14 @@ class Tasks extends React.Component {
                 <NotificationContainer/>
                 <NewTask onAdd={(task) => this.addTask(task)}/>
                 <Modal isOpen={this.state.showEditModal}
-                       contentLabel="Edit task">
+                       contentLabel="Edit task"
+                       className="edit-task-modal"
+                >
                     <EditTask
                         name={this.state.editTask.name}
                         description={this.state.editTask.description}
                         _id={this.state.editTask._id}
+                        date={this.state.editTask.date}
                         onEdit={task => this.editTask(task)}/>
                     <button className="closeModal" onClick={() => this.toggleModal()}></button>
                 </Modal>

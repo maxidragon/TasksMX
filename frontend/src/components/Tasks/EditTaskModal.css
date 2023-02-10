@@ -1,0 +1,55 @@
+.edit-task-modal {
+    position: fixed;
+    z-index: 1020;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-task-modal button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #b66a3e;
+    background-color: #b66a3e;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+}
+
+.edit-task-modal button:hover,
+.edit-task-modal button:active {
+    background-color: #d2682f;
+    border-color: #d2682f;
+}
+
+.edit-task-modal button.alternative {
+    color: #220131;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.edit-task-modal button.alternative:hover,
+.edit-task-modal button.alternative:active {
+    background-color: #ddb3f8;
+}
+
+.edit-task-modal label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.edit-task-modal input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+}

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 
 const EditTask = (props) => {
-     const [name, setName] = useState(props.name);
+    const [name, setName] = useState(props.name);
     const [description, setDesc] = useState(props.description);
+    const [date, setDate] = useState(props.date);
 
     const changeNameHandler = event => {
         const value = event.target.value;
@@ -11,6 +12,10 @@ const EditTask = (props) => {
     const changeDescHandler = event => {
         const value = event.target.value;
         setDesc(value);
+    }
+    const changeDateHandler = event => {
+        const value = event.target.value;
+        setDate(value);
     }
     const editTask = () => {
         const task = {
@@ -25,10 +30,14 @@ const EditTask = (props) => {
         <div>
             <label>Name</label>
             <input type="text" value={name} onChange={changeNameHandler}/>
-            <br />
+            <br/>
             <label>Description</label>
             <input type="text" value={description} onChange={changeDescHandler}/>
-            <button onClick={() => editTask()}>Save</button>
+            <label>Date</label>
+            <input type="date" value={date} onChange={changeDateHandler}/>
+            <div>
+                <button onClick={() => editTask()}>Save</button>
+            </div>
         </div>
     )
 }
