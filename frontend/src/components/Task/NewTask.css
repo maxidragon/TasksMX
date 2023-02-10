@@ -26,7 +26,7 @@
 }
 
 .new-task {
-    background-color: #a892ee;
+    background-color: #C5AFA0FF;
     padding: 1rem;
     margin: 2rem auto;
     width: 50rem;
@@ -40,8 +40,8 @@
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
-    border: 1px solid #40005d;
-    background-color: #40005d;
+    border: 1px solid #b66a3e;
+    background-color: #b66a3e;
     color: white;
     border-radius: 12px;
     margin-right: 1rem;
@@ -49,8 +49,8 @@
 
 .new-task button:hover,
 .new-task button:active {
-    background-color: #510674;
-    border-color: #510674;
+    background-color: #d2682f;
+    border-color: #d2682f;
 }
 
 .new-task button.alternative {

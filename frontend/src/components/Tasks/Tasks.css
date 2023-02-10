@@ -1,10 +1,11 @@
 .tasks {
     padding: 1rem;
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(197, 175, 160);
     margin: 2rem auto;
     width: 50rem;
     max-width: 95%;
 }
+
 .tasks-list {
     list-style: none;
     padding: 0;
