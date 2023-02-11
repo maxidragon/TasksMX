@@ -13,7 +13,7 @@ const EditTask = (props) => {
         const value = event.target.value;
         setDesc(value);
     }
-    const changeDateHandler = event => {
+    const changeDateHandler = (event) => {
         const value = event.target.value;
         setDate(value);
     }
@@ -21,6 +21,7 @@ const EditTask = (props) => {
         const task = {
             name: name,
             description: description,
+            date: date,
             _id: props._id
         };
         props.onEdit(task);
@@ -35,8 +36,11 @@ const EditTask = (props) => {
             <input type="text" value={description} onChange={changeDescHandler}/>
             <label>Date</label>
             <input type="date" value={date} onChange={changeDateHandler}/>
-            <div>
-                <button onClick={() => editTask()}>Save</button>
+            <div className="edit-task__actions">
+                <div>
+                    <button onClick={() => editTask()}>Save</button>
+                    <button onClick={props.onClose}>Cancel</button>
+                </div>
             </div>
         </div>
     )

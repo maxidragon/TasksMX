@@ -27,7 +27,6 @@ class Tasks extends React.Component {
     async fetchTasks() {
         const res = await axios.get('/tasks');
         const tasks = res.data;
-        ;
         this.setState({tasks});
     }
 
@@ -83,8 +82,10 @@ class Tasks extends React.Component {
                         description={this.state.editTask.description}
                         _id={this.state.editTask._id}
                         date={this.state.editTask.date}
-                        onEdit={task => this.editTask(task)}/>
-                    <button className="closeModal" onClick={() => this.toggleModal()}></button>
+                        onEdit={task => this.editTask(task)}
+                        onClose={() => this.toggleModal()}
+                    />
+
                 </Modal>
                 <Card className="tasks">
                     <ul className="tasks-list">

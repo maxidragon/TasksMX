@@ -12,6 +12,7 @@ const Task = (props) => {
         props.onEdit({
             name: props.name,
             description: props.description,
+            date: props.date,
             _id: props._id
         });
     }
