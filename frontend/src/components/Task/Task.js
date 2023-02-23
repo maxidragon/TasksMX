@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import TaskDate from './TaskDate';
 import Card from "../UI/Card";
 import './Task.css';
+import DoneIcon from '@mui/icons-material/Done';
+import {IconButton} from "@mui/material";
+import {lightBlue} from '@mui/material/colors';
 
 const Task = (props) => {
     const [showDesc, setShowDesc] = useState(false)
@@ -16,7 +19,14 @@ const Task = (props) => {
             _id: props._id
         });
     }
-
+    const completedHandler = () => {
+        props.onComplete({
+            name: props.name,
+            description: props.description,
+            date: props.date,
+            _id: props._id
+        })
+    }
     return (
         <li>
             <Card className="task-item">
@@ -26,12 +36,17 @@ const Task = (props) => {
                     {showDesc && (
                         <div className="description">{props.description}</div>
                     )}
-                    <button className="edit" onClick={editHandler}>Edit</button>
-                    <button className="delete" onClick={() => {
-                        props.onDelete(props._id)
-                    }}>Delete
-                    </button>
+                    <div className="actions">
+                        <button className="edit" onClick={editHandler}>Edit</button>
+                        <button className="delete" onClick={() => {
+                            props.onDelete(props._id)
+                        }}>Delete
+                        </button>
+                    </div>
 
+                    <IconButton aria-label="complete" color="info" onClick={completedHandler}>
+                        <DoneIcon/>
+                    </IconButton>
                 </div>
             </Card>
         </li>

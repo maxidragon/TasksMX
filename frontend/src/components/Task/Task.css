@@ -53,7 +53,7 @@
     }
 }
 
-.task-item button {
+.actions button {
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
@@ -64,19 +64,19 @@
     margin-right: 1rem;
 }
 
-.task-item button:hover,
-.task-item button:active {
+.actions button:hover,
+.actions button:active {
     background-color: #d2682f;
     border-color: #d2682f;
 }
 
-.task-item button.alternative {
+.actions button.alternative {
     color: #220131;
     border-color: transparent;
     background-color: transparent;
 }
 
-.task-item button.alternative:hover,
-.task-item button.alternative:active {
+.actions button.alternative:hover,
+.actions button.alternative:active {
     background-color: #ddb3f8;
 }

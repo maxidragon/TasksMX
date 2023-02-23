@@ -59,6 +59,10 @@ class Tasks extends React.Component {
         this.toggleModal()
     }
 
+    async completeTask(task) {
+        //TODO
+    }
+
     editTaskHandler(task) {
         this.toggleModal();
         this.setState({editTask: task});
@@ -99,6 +103,7 @@ class Tasks extends React.Component {
                                     _id={task._id}
                                     onEdit={(task) => this.editTaskHandler(task)}
                                     onDelete={(_id) => this.deleteTask(_id)}
+                                    onComplete={(task) => this.completeTask(task)}
                                 />
                             )
                         })}
