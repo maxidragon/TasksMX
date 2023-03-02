@@ -30,6 +30,21 @@ export class TasksService {
         return existingTask;
     }
 
+    async completeTask(
+        taskId: string
+    ): Promise<ITask> {
+        const existingTask = await this.taskModel.findByIdAndUpdate(
+            taskId,
+            {
+                isDone: true
+            }
+        );
+        if (!existingTask) {
+            throw new NotFoundException(`Task #${taskId} not found`);
+        }
+        return existingTask;
+    }
+
     async getAllTasks(): Promise<ITask[]> {
         const taskData = await this.taskModel.find();
         if (!taskData || taskData.length == 0) {

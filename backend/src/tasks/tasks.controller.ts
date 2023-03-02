@@ -4,7 +4,7 @@ import {
     Delete,
     Get,
     HttpStatus,
-    Param,
+    Param, Patch,
     Post,
     Put,
     Res,
@@ -81,8 +81,6 @@ export class TasksController {
         }
     }
 
-    //TODO
-    //Complete task
     @Post()
     async createTask(@Res() response, @Body() createTaskDto: CreateTaskDto) {
         try {
@@ -98,7 +96,7 @@ export class TasksController {
     }
 
     @Put('/:id')
-    async updateStudent(
+    async updateTask(
         @Res() response,
         @Param('id') taskId: string,
         @Body() updateTaskDto: UpdateTaskDto,
@@ -110,6 +108,24 @@ export class TasksController {
             );
             return response.status(HttpStatus.OK).json({
                 message: 'Task has been successfully updated',
+                existingTask,
+            });
+        } catch (err) {
+            return response.status(err.status).json(err.response);
+        }
+    }
+
+    @Patch('complete/:id')
+    async completeTask(
+        @Res() response,
+        @Param('id') taskId: string
+    ) {
+        try {
+            const existingTask = await this.tasksService.completeTask(
+                taskId
+            );
+            return response.status(HttpStatus.OK).json({
+                message: 'Task has been successfully completed',
                 existingTask,
             });
         } catch (err) {
