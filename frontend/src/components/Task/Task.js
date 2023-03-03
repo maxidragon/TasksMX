@@ -24,6 +24,7 @@ const Task = (props) => {
             name: props.name,
             description: props.description,
             date: props.date,
+            isDone: true,
             _id: props._id
         })
     }

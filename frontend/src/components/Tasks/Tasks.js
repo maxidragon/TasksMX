@@ -26,6 +26,11 @@ class Tasks extends React.Component {
 
     async fetchTasks() {
         const res = await axios.get('/tasks');
+        res.data.map(task => {
+            if (task.isDone === false) {
+                this.state.tasks.push(task);
+            }
+        })
         const tasks = res.data;
         this.setState({tasks});
     }
@@ -50,7 +55,7 @@ class Tasks extends React.Component {
 
     async editTask(task) {
         await axios.put('/tasks/' + task._id, task)
-        const tasks = [...this.state.tasks]
+        const tasks = [...this.state.tasks];
         const index = tasks.findIndex(x => x._id === task._id)
         if (index >= 0) {
             tasks[index] = task;
@@ -60,7 +65,13 @@ class Tasks extends React.Component {
     }
 
     async completeTask(task) {
-        //TODO
+        await axios.patch('/tasks/' + task._id + '/complete');
+        const tasks = [...this.state.tasks];
+        const index = tasks.findIndex(x => x._id === task._id);
+        if (index >= 0) {
+            tasks[index] = task;
+            this.setState({tasks});
+        }
     }
 
     editTaskHandler(task) {
