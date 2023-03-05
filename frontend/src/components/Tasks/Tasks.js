@@ -66,6 +66,7 @@ class Tasks extends React.Component {
             NotificationManager.error(err.response.data.message)
         }
     }
+
     async getMonthlyTasks() {
         try {
             const res = await axios.get('/tasks/monthly');
@@ -75,6 +76,7 @@ class Tasks extends React.Component {
             NotificationManager.error(err.response.data.message)
         }
     }
+
     async getCompletedTasks() {
         try {
             const res = await axios.get('/tasks/completed');
@@ -116,8 +118,7 @@ class Tasks extends React.Component {
 
     async completeTask(task) {
         await axios.patch('/tasks/' + task._id + '/complete');
-        const tasks = [...this.state.tasks];
-
+        await this.fetchTasks();
     }
 
     editTaskHandler(task) {
